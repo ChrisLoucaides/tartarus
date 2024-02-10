@@ -12,5 +12,13 @@ public class MentalHealthFirstAider extends User {
         super(id, name, email, password);
         this.listOfStudentIds = listOfStudentIds;
     }
+
+    public List<String> listOfStudentIds() {
+        return listOfStudentIds;
+    }
+
+    public void setListOfStudentIds(List<String> listOfStudentIds) {
+        this.listOfStudentIds = listOfStudentIds;
+    }
 }
 

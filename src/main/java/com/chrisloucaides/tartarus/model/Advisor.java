@@ -14,5 +14,21 @@ public class Advisor extends User {
         this.listOfStudentIds = listOfStudentIds;
         this.listOfMeetingIds = listOfMeetingIds;
     }
+
+    public List<String> listOfStudentIds() {
+        return listOfStudentIds;
+    }
+
+    public void setListOfStudentIds(List<String> listOfStudentIds) {
+        this.listOfStudentIds = listOfStudentIds;
+    }
+
+    public List<String> listOfMeetingIds() {
+        return listOfMeetingIds;
+    }
+
+    public void setListOfMeetingIds(List<String> listOfMeetingIds) {
+        this.listOfMeetingIds = listOfMeetingIds;
+    }
 }
 
