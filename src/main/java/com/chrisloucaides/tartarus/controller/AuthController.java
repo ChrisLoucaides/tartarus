@@ -15,7 +15,7 @@ public class AuthController {
     private UserService userService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login (@RequestParam String userEmail, @RequestParam String password) { //TODO FYP-2: TDD this
+    public ResponseEntity<String> login (@RequestParam String userEmail, @RequestParam String password) {
         if (userService.authenticateUser(userEmail, password)) {
             return ResponseEntity.ok("Login success!");
         } else {
