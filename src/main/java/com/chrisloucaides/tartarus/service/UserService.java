@@ -11,16 +11,12 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User findByUserId(String userId) { //TODO FYP-2: TDD ME
-        return userRepository.findByUserId(userId);
-    }
-
-    public User findByUserEmail(String userEmail) { //TODO FYP-2: TDD ME
-        return userRepository.findByUserEmail(userEmail);
+    public User findByEmail(String userEmail) { //TODO FYP-2: TDD ME
+        return userRepository.findByEmail(userEmail);
     }
 
     public boolean authenticateUser(String userEmail, String password) {
-        User user = userRepository.findByUserEmail(userEmail);
+        User user = userRepository.findByEmail(userEmail);
         return user != null && user.password().equals(password);
     }
 }

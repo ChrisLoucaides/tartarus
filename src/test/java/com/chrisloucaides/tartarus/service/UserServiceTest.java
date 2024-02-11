@@ -60,7 +60,7 @@ class UserServiceTest {
             User user = new User();
             user.setEmail(email);
             user.setPassword(UserServiceTest.A_VALID_USER_PASSWORD);
-            when(userRepository.findByUserEmail(email)).thenReturn(user);
+            when(userRepository.findByEmail(email)).thenReturn(user);
         }
 
         private boolean whenAuthenticatingUser(String userEmail, String password) {
