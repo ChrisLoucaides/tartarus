@@ -11,11 +11,11 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User findByUserId(String userId) {
+    public User findByUserId(String userId) { //TODO FYP-2: TDD ME
         return userRepository.findByUserId(userId);
     }
 
-    public User findByUserEmail(String userEmail) {
+    public User findByUserEmail(String userEmail) { //TODO FYP-2: TDD ME
         return userRepository.findByUserEmail(userEmail);
     }
 
