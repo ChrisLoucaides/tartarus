@@ -27,13 +27,14 @@ class UserServiceTest {
 
     @Nested
     class UserRepositoryLoginTest {
+        boolean isAuthenticated;
         @Test
         public void shouldAuthenticateGivenValidUserWithValidPassword() {
 
             givenAUserWithEmail(A_VALID_USER_EMAIL);
 
-            boolean isAuthenticated = whenAuthenticatingUser(A_VALID_USER_EMAIL, A_VALID_USER_PASSWORD);
-            
+            isAuthenticated = whenAuthenticatingUser(A_VALID_USER_EMAIL, A_VALID_USER_PASSWORD);
+
             thenUserShouldBeAuthenticated(isAuthenticated);
         }
 
@@ -41,7 +42,7 @@ class UserServiceTest {
         void shouldNotAuthenticateGivenInvalidUser() {
             givenAUserWithEmail(A_VALID_USER_EMAIL);
 
-            boolean isAuthenticated = whenAuthenticatingUser(AN_INVALID_USER_EMAIL, A_VALID_USER_PASSWORD);
+            isAuthenticated = whenAuthenticatingUser(AN_INVALID_USER_EMAIL, A_VALID_USER_PASSWORD);
 
             thenUserShouldNotBeAuthenticated(isAuthenticated);
         }
@@ -50,7 +51,7 @@ class UserServiceTest {
         void shouldNotAuthenticateGivenCorrectEmailButWrongPassword() {
             givenAUserWithEmail(AN_INVALID_USER_EMAIL);
 
-            boolean isAuthenticated = whenAuthenticatingUser(AN_INVALID_USER_EMAIL, AN_INVALID_USER_PASSWORD);
+            isAuthenticated = whenAuthenticatingUser(AN_INVALID_USER_EMAIL, AN_INVALID_USER_PASSWORD);
 
             thenUserShouldNotBeAuthenticated(isAuthenticated);
         }
