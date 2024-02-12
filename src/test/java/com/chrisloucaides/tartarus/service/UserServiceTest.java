@@ -55,24 +55,38 @@ class UserServiceTest {
 
             thenUserShouldNotBeAuthenticated(isAuthenticated);
         }
+    }
 
-        private void givenAUserWithEmail(String email) {
-            User user = new User();
-            user.setEmail(email);
-            user.setPassword(UserServiceTest.A_VALID_USER_PASSWORD);
-            when(userRepository.findByEmail(email)).thenReturn(user);
-        }
+    @Test
+    void shouldReturnUserIdGivenEmail() {
+        givenAUserWithEmail(A_VALID_USER_EMAIL);
 
-        private boolean whenAuthenticatingUser(String userEmail, String password) {
-            return userService.authenticateUser(userEmail, password);
-        }
+        String userId = whenWeGetTheIdFromTheUserWithEmail(A_VALID_USER_EMAIL);
 
-        private void thenUserShouldBeAuthenticated(boolean isAuthenticated) {
-            assertTrue(isAuthenticated, "User should be authenticated");
-        }
+        assertEquals("100", userId);
+    }
 
-        private void thenUserShouldNotBeAuthenticated(boolean isAuthenticated) {
-            assertFalse(isAuthenticated, "User should not be authenticated");
-        }
+    private String whenWeGetTheIdFromTheUserWithEmail(String aValidUserEmail) {
+        return userService.getUserIdByEmail(aValidUserEmail);
+    }
+
+    private void givenAUserWithEmail(String email) {
+        User user = new User();
+        user.setEmail(email);
+        user.setPassword(UserServiceTest.A_VALID_USER_PASSWORD);
+        user.setId("100");
+        when(userRepository.findByEmail(email)).thenReturn(user);
+    }
+
+    private boolean whenAuthenticatingUser(String userEmail, String password) {
+        return userService.authenticateUser(userEmail, password);
+    }
+
+    private void thenUserShouldBeAuthenticated(boolean isAuthenticated) {
+        assertTrue(isAuthenticated, "User should be authenticated");
+    }
+
+    private void thenUserShouldNotBeAuthenticated(boolean isAuthenticated) {
+        assertFalse(isAuthenticated, "User should not be authenticated");
     }
 }
